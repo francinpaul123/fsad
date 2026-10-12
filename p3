@@ -1,0 +1,173 @@
+npx create-react-app program3
+cd program3
+mkdir src/ResumeCreate
+
+
+`src/ResumeCreate/Resume_Header.js`
+
+```
+import React from "react";
+
+class Header extends React.Component {
+  render() {
+    return (
+      <header className="head">
+        <h1>Resume Details</h1>
+      </header>
+    );
+  }
+}
+
+export default Header;
+```
+
+`src/ResumeCreate/Resume_Person_Info.js`
+
+```
+import React from "react";
+
+class Info extends React.Component {
+  render() {
+    return (
+      <section className="info">
+        <h2>Personal Information</h2>
+        <p><b>Name :</b> Prashanth K</p>
+        <p><b>Address :</b> Kengeri</p>
+        <p><b>Phone No :</b> 1234567890</p>
+        <p><b>Email id :</b> prashanthk@rvce.edu.in</p>
+      </section>
+    );
+  }
+}
+
+export default Info;
+```
+
+### File 3: `src/ResumeCreate/Education.js`
+
+```
+import React from "react";
+
+// Class component to display an education row
+class EdRow extends React.Component {
+  render() {
+    const { id, name, place, deg, grade } = this.props;
+
+    return (
+      <tr>
+        <td>{id}</td>
+        <td>{name}</td>
+        <td>{place}</td>
+        <td>{deg}</td>
+        <td>{grade}</td>
+      </tr>
+    );
+  }
+}
+
+// Class component to display the education table
+class EdTable extends React.Component {
+  render() {
+    const edu = [
+      {
+        id: 1,
+        name: "National Public School",
+        place: "Bengaluru",
+        deg: "10th",
+        grade: "A+",
+      },
+      {
+        id: 2,
+        name: "Indian Institute of Science",
+        place: "Bengaluru",
+        deg: "Under Grad",
+        grade: "9.8",
+      },
+    ];
+
+    const rows = edu.map((e) => (
+      <EdRow key={e.id} {...e} />
+    ));
+
+    return (
+      <table>
+        <thead>
+          <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Place</th>
+            <th>Education</th>
+            <th>Grade</th>
+          </tr>
+        </thead>
+        <tbody>{rows}</tbody>
+      </table>
+    );
+  }
+}
+
+// Function component
+function Education() {
+  return (
+    <section className="edu">
+      <h2>Education</h2>
+      <EdTable />
+    </section>
+  );
+}
+
+export default Education;
+```
+
+## 3. Main File: `src/index.js`
+
+```
+import React from "react";
+import ReactDOM from "react-dom/client";
+import "./index.css";
+
+import Header from "./ResumeCreate/Resume_Header";
+import Info from "./ResumeCreate/Resume_Person_Info";
+import Education from "./ResumeCreate/Education";
+
+const root = ReactDOM.createRoot(
+  document.getElementById("root")
+);
+
+root.render(
+  <React.StrictMode>
+    <div className="page">
+      <Header />
+      <Info />
+      <Education />
+    </div>
+  </React.StrictMode>
+);
+```
+
+## 4. CSS File: `src/index.css`
+
+```
+.page {
+  width: 600px;
+  margin: auto;
+}
+
+h1 {
+  text-align: center;
+}
+
+table {
+  border-collapse: collapse;
+}
+
+th, td {
+  border: 1px solid black;
+  padding: 5px;
+}
+
+npm start
+
+
+The resume will open in the browser, usually at `http://localhost:3000`.
+
