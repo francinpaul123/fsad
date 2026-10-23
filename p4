@@ -121,3 +121,12 @@ class StudentListTable extends React.Component {
 }
 
 export default StudentListTable;
+
+
+import React from "react";
+import ReactDOM from "react-dom/client";
+import StudentListTable from "./Student";
+
+ReactDOM.createRoot(document.getElementById("root")).render(
+  <StudentListTable />
+);
